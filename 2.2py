@@ -1,0 +1,70 @@
+import tkinter as Tk
+from tkinter import*
+import csv
+from datetime import time
+from datetime import*
+import uuid
+def insert():
+   a=Name_field.get()
+   a=a.split(",")
+   b=MobileNumber_field.get()
+   b=b.split(",")
+   c=Email_field.get()
+   c=c.split(",")
+   d=Institution_field.get()
+   d=d.split(",")
+   f=[a,b,c,d]
+   e=[]
+   for i in f:
+       e.append(*i)
+
+   e.append(datetime.time(datetime.now()))
+   e.append(uuid.uuid1())
+   with open("poorna.csv", 'a') as csvFile:
+       writer = csv.writer(csvFile)
+       writer.writerow(e)
+           
+j=open("poorna.csv", "w")
+if __name__=="__main__":
+   root=tkinter.Tk()
+     
+   root.title("Registration Form")
+ 
+   root.geometry("500x500")
+ 
+   Name=Label(root,text="Name")
+   Name.grid(row=0,column=0)
+   Name_field=Entry(root)
+   Name_field.grid(row=0, column=1)
+   MobileNumber=Label(root,text="MobileNumber")
+   Email=Label(root,text="Email")
+   Institution=Label(root,text="Institution")
+ 
+   
+   MobileNumber.grid(row=1,column=0)
+   Email.grid(row=2,column=0)
+   Institution.grid(row=3,column=0)
+ 
+ 
+   MobileNumber_field=Entry(root)
+   Email_field=Entry(root)
+   Institution_field=Entry(root)
+   f= ['Name','Mobile number','Email','Institution','Time','UUID']
+   with open("poorna.csv", 'a') as csvFile:
+       writer = csv.writer(csvFile)
+       writer.writerow(f)
+   
+ 
+ 
+   
+   MobileNumber_field.grid(row=1, column=1)
+   Email_field.grid(row=2, column=1)
+   Institution_field.grid(row=3,column=1)
+   
+ 
+ 
+   submit = Button(root, text="Submit", fg="Black",
+                          bg="Red", command=insert)
+   submit.grid(row=4, column=1)
+ 
+   root.mainloop()
