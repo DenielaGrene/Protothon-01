@@ -1,14 +1,14 @@
-import numpy as np
+ import numpy as np
 
-# list with input numbers
+
 a = [int(x) for x in input().split()]
 
-sum_squ = 0
-for ele in a:
-    sum_squ = sum_squ + (ele * ele)
+sum_of_squares = 0
+for element in a:
+    sum_of_squares = sum_of_squares + (element * element)
 
 
     
-sum_by_length = sum_squ / len(a)
+sum_of_it = sum_of_squares / len(a)
 
 print("Result = ", np.sqrt(sum_by_length)) 
